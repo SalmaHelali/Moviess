@@ -1,0 +1,20 @@
+ALGORITHM sentence_treatment
+VAR
+    nbvowels, nbwords: INTEGER:= 0;
+    lengthch: INTEGER:= 1;
+    c: CHAR;
+BEGIN
+    REPEAT
+        Read(chaine);
+    UNTIL (c <> ".")
+    IF (c in ['a'..'z','A',..'Z'," "]) THEN
+        lengthch:=lengthch+1;
+        IF (c = " ") THEN
+            nbword:= nbword+1;
+        END_IF
+        IF (c in ['a','e','i','o','u','y','A','E','I','O','U','Y']) THEN
+            nbvowels:=nbvowels+1;
+        END_IF
+    END_IF
+Write ("the length of the sentence is ",lengthch,"  the number of words in ",nbwords," and the number of vowels is ",nbvowels);
+END

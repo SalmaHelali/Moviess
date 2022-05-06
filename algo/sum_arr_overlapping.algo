@@ -1,0 +1,65 @@
+ALGORITHM sum_arr_overlapping
+VAR
+    arr1 : ARRAY_OF INTEGER[50];
+    arr2 : ARRAY_OF INTEGER[50];
+    n,m,i,j,sum1,sum2,sum: INTEGER:= 0;
+    unique: BOOLEAN;
+BEGIN
+    REPEAT
+        read(n,m);
+    UNTIL ((n<50) and (m<50))
+
+    REPEAT
+    unique:= true;
+        FOR i FROM 1 TO n STEP 1  DO
+            read (arr1[i])
+        END_FOR
+        FOR i FROM 1 TO n STEP 1  DO
+            FOR j FROM i+1 TO n STEP 1  DO
+                IF (arr1[i]=arr1[j]) THEN
+                    unique:= false;
+                END_IF
+            END_FOR
+        END_FOR
+        IF (NOT unique) THEN
+            write("enter a unique element");
+        END_IF
+    UNTIL (unique=true)
+
+    REPEAT
+    unique:= true;
+        FOR i FROM 1 TO m STEP 1  DO
+            read (arr2[i])
+        END_FOR
+        FOR i FROM 1 TO m STEP 1  DO
+            FOR j FROM i+1 TO m STEP 1  DO
+                IF (arr2[i]=arr2[j]) THEN
+                    unique:= false;
+                END_IF
+            END_FOR
+        END_FOR
+        IF (NOT unique) THEN
+            write("enter a unique element");
+        END_IF
+    UNTIL (unique=true)
+
+    FOR i FROM 0 TO n-1 STEP 1 DO
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            IF (arr1[i]=arr2[j]) THEN
+                sum1:=sum1+arr1[i]
+            END_IF
+        END_FOR
+    END_FOR
+
+    FOR j FROM 0 TO m-1 STEP 1  DO
+        FOR i FROM 0 TO n-1 STEP 1 DO
+            IF (arr2[j]=arr1[i]) THEN
+                sum2:=sum2+arr2[j]
+            END_IF
+        END_FOR
+    END_FOR
+
+    sum:=sum1+sum2;
+
+    write ("the sum of overlapping elements in both arrays: ", sum);
+END

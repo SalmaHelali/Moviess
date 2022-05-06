@@ -1,0 +1,52 @@
+PROCEDURE size_array(n: INTEGER)
+BEGIN
+        REPEAT
+        write ("enter the size of the array");
+        read(n);
+    UNTIL (n<100)
+END
+
+PROCEDURE fill_array(arr : ARRAY_OF INTEGER, n: INTEGER)
+VAR
+    i: INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write ("enter an element to the array");
+        read(arr[i]);
+    END_FOR
+END
+
+PROCEDURE insertion_sort(arr : ARRAY_OF INTEGER, n: INTEGER)
+VAR
+    i,j,key: INTEGER;
+BEGIN
+    FOR i FROM 1 TO n STEP 1  DO
+        key:= arr[i];
+        j:=i-1;
+        WHILE (j>0 and arr[j]>key) DO
+            arr[j+1] = arr[j]
+            j:=j-1;
+        END_WHILE
+        arr[j+1]:=key;
+    END_FOR
+END
+
+PROCEDURE print_array(arr : ARRAY_OF INTEGER, n: INTEGER)
+VAR
+    i: INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write (arr[i]," ");
+    END_FOR
+END
+
+ALGORITHM algorithm_insertionSort
+VAR
+    arr : ARRAY_OF INTEGER[100];
+    n: INTEGER;
+BEGIN
+    size_array(n);
+    fill_array(arr,n);
+    insertion_sort(arr,n);
+    print_array(arr,n);
+END
